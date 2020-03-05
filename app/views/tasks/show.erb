@@ -1,16 +1,18 @@
 <h1>Hello <%=@user.username %>!</h1>
 
-<h2>List 1</h2>
-<ul>
-<li>Task 1</li>
-<li>Task 2</li>
-</ul>
+<div class="col-6">
+<% @lists.each do |list|%>
+  <% if list.user_id == @user.id %>
+    <h2><%= list.name %></h2>
+    <a href="/lists/<%=list.id%>/edit"><i class="fa fa-pencil"></i> Edit</a>
+    <a href="/lists/<%=list.id%>/delete"><i class="fa fa-times"></i> Delete</a>
+    <h4><a href="tasks/new/<%=list.id%>"><i class="fa fa-plus"></i> New Task</a></h4>
 
-<h2>List 2</h2>
-<ul>
-<li>Task A</li>
-<li>Task B</li>
-</ul>
-
-<a href="lists/new">Create New List</a><br>
-<a href="tasks/new">Create New Task</a>
+    <% list.tasks.each do |task| %>
+      <h4><i class="fa fa-minus"></i> <%= task.name %></h4>
+      <a href="/tasks/<%= task.id %>/edit"><i class="fa fa-pencil"></i>Edit</a>
+      <a href="/tasks/<%= task.id %>/delete"><i class="fa fa-times"></i>Delete</a>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
