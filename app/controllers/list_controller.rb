@@ -1,4 +1,10 @@
 class ListsController < ApplicationController
+
+  get '/lists/new' do
+    redirect_if_not_logged_in
+    erb :'/lists/new'
+  end
+
   post '/lists/new' do
     @user = current_user
     list = @user.lists.create(:name => params[:name])
@@ -12,7 +18,7 @@ class ListsController < ApplicationController
     erb :'lists/edit'
   end
 
-  patch '/lists/:id' do 
+  patch '/lists/:id' do
     @list = List.find_by_id(params[:id])
     @list.name = params[:name]
     @list.save
@@ -24,7 +30,7 @@ class ListsController < ApplicationController
     erb :'lists/delete'
   end
 
-  delete '/lists/:id' do 
+  delete '/lists/:id' do
     @list = List.find_by_id(params[:id])
     @list.destroy
     redirect '/tasks'

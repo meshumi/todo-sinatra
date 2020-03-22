@@ -12,18 +12,21 @@
 
 ActiveRecord::Schema.define(version: 2020_03_04_100249) do
 
-  create_table "lists", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "lists", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "tasks", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "list_id"
     t.integer "user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
   end
