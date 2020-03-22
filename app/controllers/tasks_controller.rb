@@ -1,4 +1,4 @@
-class TasksController < ApplicationController 
+class TasksController < ApplicationController
   get '/tasks' do
     redirect_if_not_logged_in
     @user = current_user
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
     erb :'/tasks/delete'
   end
 
-  delete '/tasks/:id' do 
+  delete '/tasks/:id' do
     @task = Task.find_by_id(params[:id])
     @task.destroy
     redirect '/tasks'
