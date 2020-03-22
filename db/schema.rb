@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200304100249) do
+ActiveRecord::Schema.define(version: 2020_03_04_100249) do
 
   create_table "lists", force: :cascade do |t|
-    t.string  "name"
+    t.string "name"
     t.integer "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string  "name"
+    t.string "name"
     t.integer "list_id"
     t.integer "user_id"
   end
