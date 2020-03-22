@@ -1,4 +1,4 @@
-class ListsController < ApplicationController 
+class ListsController < ApplicationController
   post '/lists/new' do
     @user = current_user
     list = @user.lists.create(:name => params[:name])
